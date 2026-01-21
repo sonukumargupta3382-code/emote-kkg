@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KKG CHEATS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0; padding: 0;
+            background-color: #050505;
+            font-family: 'Rajdhani', sans-serif;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, #120524 0%, #000000 100%);
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 420px;
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid #d900ff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 35px rgba(217, 0, 255, 0.2);
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            color: #d900ff;
+            text-shadow: 0 0 10px rgba(217, 0, 255, 0.7);
+            margin: 0 0 20px 0;
+            font-size: 32px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        /* --- Input Fields --- */
+        .inp-group { margin-bottom: 12px; }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            background: #0f0f0f;
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 6px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            outline: none;
+            transition: 0.3s;
+        }
+        input:focus { 
+            border-color: #d900ff; 
+            box-shadow: 0 0 8px rgba(217, 0, 255, 0.3); 
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-family: 'Rajdhani', sans-serif;
+            margin-top: 5px;
+            transition: 0.2s;
+        }
+        .btn-login {
+            background: linear-gradient(90deg, #8a2be2, #d900ff);
+            color: white;
+            box-shadow: 0 0 15px rgba(217, 0, 255, 0.4);
+        }
+        .btn-login:hover { transform: scale(1.02); }
+
+        .btn-link {
+            background: transparent;
+            border: 1px solid #00e5ff;
+            color: #00e5ff;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .btn-link:hover { background: rgba(0, 229, 255, 0.1); }
+
+        /* --- Screens --- */
+        #tool-screen { display: none; }
+
+        /* --- Status Console (Now in Middle) --- */
+        .console-label {
+            text-align: left;
+            font-size: 12px;
+            color: #00ff88;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .log-box {
+            background: #000;
+            border: 1px solid #00ff88;
+            height: 80px;
+            text-align: left;
+            padding: 8px;
+            font-size: 11px;
+            color: #00ff88;
+            font-family: 'Courier New', monospace;
+            overflow-y: auto;
+            border-radius: 6px;
+            box-shadow: inset 0 0 10px rgba(0, 255, 136, 0.1);
+            margin-bottom: 20px; /* Space before emotes */
+        }
+
+        /* --- Emote Grid (At Bottom) --- */
+        .grid-label {
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 8px;
+            border-top: 1px solid #222;
+            padding-top: 10px;
+        }
+        .emote-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-height: 200px; /* Thoda chhota kiya taki screen pe fit aaye */
+            overflow-y: auto;
+            padding: 5px;
+        }
+        .emote-card {
+            background: #151515;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+            text-align: center;
+        }
+        .emote-card:hover {
+            border-color: #d900ff;
+            background: #201025;
+            transform: translateY(-2px);
+        }
+        .emote-card img { width: 40px; height: 40px; object-fit: contain; margin-bottom: 5px; }
+        .emote-card span { display: block; font-size: 10px; color: #ccc; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>KKG CHEATS</h1>
+
+        <!-- 1. LOGIN SCREEN -->
+        <div id="login-screen">
+            <div class="inp-group">
+                <input type="text" id="log-user" placeholder="USERNAME">
+            </div>
+            <div class="inp-group">
+                <input type="password" id="log-pass" placeholder="PASSWORD">
+            </div>
+            <button class="btn btn-login" onclick="login()">LOGIN ACCESS</button>
+            <button class="btn btn-link" onclick="openKeyLink()">GET USER / PASS</button>
+            <p id="msg" style="color: #ff4444; margin-top: 10px; font-size: 12px;"></p>
+        </div>
+
+        <!-- 2. TOOL SCREEN -->
+        <div id="tool-screen">
+            <!-- Inputs -->
+            <div class="inp-group">
+                <input type="number" id="tc" placeholder="TEAM CODE (TC)">
+            </div>
+            <div class="inp-group">
+                <input type="number" id="uid" placeholder="PLAYER UID">
+            </div>
+            <div class="inp-group">
+                <select id="server">
+                    <option value="ind">India (IND)</option>
+                    <option value="bd">Bangladesh (BD)</option>
+                </select>
+            </div>
+
+            <!-- STATUS SCREEN (Moved Here) -->
+            <div class="console-label">> LIVE STATUS LOG</div>
+            <div class="log-box" id="console">
+                [System]: Connected...<br>
+                [System]: Waiting for user input...
+            </div>
+
+            <!-- EMOTES (At Bottom) -->
+            <div class="grid-label">TAP EMOTE TO INJECT</div>
+            <div class="emote-grid" id="grid">
+                <p style="grid-column: span 3; color: #666; font-size: 12px;">Loading Emotes...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script>
+        // 🔴🔴🔴 YAHAN APNA FIREBASE CONFIG CODE DALNA HAI 🔴🔴🔴
+        const firebaseConfig = {
+  apiKey: "AIzaSyAS2lrxIdpz8TMTwEuSHy1Xsdx3X28ISNk",
+  authDomain: "earning-f34b7.firebaseapp.com",
+  databaseURL: "https://earning-f34b7-default-rtdb.firebaseio.com",
+  projectId: "earning-f34b7",
+  storageBucket: "earning-f34b7.firebasestorage.app",
+  messagingSenderId: "423102037675",
+  appId: "1:423102037675:web:e7329b82117de13bd501ee"
+};
+
+        // Initialize Firebase
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        const db = firebase.database();
+        let currentLink = "https://google.com"; 
+
+        // Get Link for Button
+        db.ref('settings/link').on('value', snap => {
+            if(snap.exists()) currentLink = snap.val();
+        });
+
+        // --- Login Logic ---
+        function login() {
+            const u = document.getElementById('log-user').value;
+            const p = document.getElementById('log-pass').value;
+            const msg = document.getElementById('msg');
+            msg.innerText = "Checking...";
+
+            db.ref('settings').once('value').then(snap => {
+                const data = snap.val() || {};
+                const realUser = data.username || "admin";
+                const realPass = data.password || "admin";
+
+                if(u === realUser && p === realPass) {
+                    document.getElementById('login-screen').style.display = 'none';
+                    document.getElementById('tool-screen').style.display = 'block';
+                    loadEmotes();
+                } else {
+                    msg.innerText = "Invalid Username or Password!";
+                }
+            }).catch(() => msg.innerText = "Internet Connection Error!");
+        }
+
+        function openKeyLink() {
+            window.open(currentLink, '_blank');
+        }
+
+        // --- Load Emotes ---
+        function loadEmotes() {
+            const grid = document.getElementById('grid');
+            db.ref('emotes').on('value', snap => {
+                grid.innerHTML = "";
+                if(!snap.exists()) {
+                    grid.innerHTML = "<p style='grid-column: span 3; color:#666'>No Emotes Added via Admin Panel</p>";
+                    return;
+                }
+                snap.forEach(child => {
+                    const d = child.val();
+                    grid.innerHTML += `
+                        <div class="emote-card" onclick="send('${d.id}')">
+                            <img src="${d.img}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/747/747376.png'">
+                            <span>${d.id}</span>
+                        </div>
+                    `;
+                });
+            });
+        }
+
+        // --- Send Request ---
+        async function send(id) {
+            const tc = document.getElementById('tc').value;
+            const uid = document.getElementById('uid').value;
+            const sv = document.getElementById('server').value;
+            const con = document.getElementById('console');
+
+            if(!tc || !uid) {
+                con.innerHTML += `<span style="color:red">[Error]: Enter TC & UID First!</span><br>`;
+                con.scrollTop = con.scrollHeight;
+                return;
+            }
+
+            con.innerHTML += `<span style="color:yellow">[Sending]: Emote ${id}...</span><br>`;
+            con.scrollTop = con.scrollHeight;
+            
+            const url = `https://clientbp-emote-ggblueshark.vercel.app/play?tc=${tc}&uid=${uid}&emtid=${id}&server=${sv}`;
+
+            try {
+                // Background request (no-cors prevents reading response but sends request)
+                await fetch(url, { mode: 'no-cors' });
+                con.innerHTML += `<span style="color:#00ff88">[Success]: Sent to server.</span><br>`;
+            } catch (e) {
+                // Fallback
+                window.open(url, '_blank');
+                con.innerHTML += `<span style="color:cyan">[Info]: Opened in browser.</span><br>`;
+            }
+            con.scrollTop = con.scrollHeight;
+        }
+
+    </script>
+</body>
+</html>
