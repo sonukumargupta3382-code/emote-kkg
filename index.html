@@ -6,52 +6,66 @@
     <title>KKG CHEATS</title>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
+        /* --- General Reset --- */
         * { box-sizing: border-box; }
+        
         body {
             margin: 0; padding: 0;
             background-color: #050505;
             font-family: 'Rajdhani', sans-serif;
             color: #fff;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(circle, #120524 0%, #000000 100%);
-            overflow: hidden;
+            
+            /* --- CENTERING MAGIC --- */
+            min-height: 100vh; /* Full Height */
+            display: flex;     /* Flexbox Enable */
+            /* align-items: center hata diya hai taaki scroll issue na ho */
+            
+            /* Background Style */
+            background: radial-gradient(circle at 50% 50%, #1a0b2e 0%, #000000 100%);
+            background-attachment: fixed;
+            overflow-y: auto; /* Enable Scroll */
         }
 
         .container {
             width: 90%;
-            max-width: 420px;
-            background: rgba(10, 10, 10, 0.9);
+            max-width: 450px;
+            background: rgba(10, 10, 10, 0.95);
             border: 1px solid #d900ff;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 0 35px rgba(217, 0, 255, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 50px rgba(217, 0, 255, 0.15);
             text-align: center;
             position: relative;
+            
+            /* --- ISSE LOGIN PAGE CENTER HOGA --- */
+            margin: auto; /* Vertical & Horizontal Center automatically */
+            margin-top: auto; 
+            margin-bottom: auto;
+            
+            /* Thoda extra gap mobile scroll ke liye */
+            transform: translateZ(0); 
         }
 
         h1 {
             color: #d900ff;
-            text-shadow: 0 0 10px rgba(217, 0, 255, 0.7);
-            margin: 0 0 20px 0;
-            font-size: 32px;
+            text-shadow: 0 0 15px rgba(217, 0, 255, 0.8);
+            margin: 0 0 25px 0;
+            font-size: 34px;
             letter-spacing: 2px;
             text-transform: uppercase;
             border-bottom: 2px solid #333;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
         }
 
-        /* --- Input Fields --- */
-        .inp-group { margin-bottom: 12px; }
+        /* --- Inputs --- */
+        .inp-group { margin-bottom: 15px; }
         input, select {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             background: #0f0f0f;
             border: 1px solid #333;
             color: #fff;
-            border-radius: 6px;
+            border-radius: 8px;
             font-family: 'Rajdhani', sans-serif;
             font-size: 16px;
             font-weight: bold;
@@ -60,103 +74,113 @@
         }
         input:focus { 
             border-color: #d900ff; 
-            box-shadow: 0 0 8px rgba(217, 0, 255, 0.3); 
+            box-shadow: 0 0 10px rgba(217, 0, 255, 0.3); 
         }
 
         /* --- Buttons --- */
         .btn {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
             text-transform: uppercase;
             font-family: 'Rajdhani', sans-serif;
-            margin-top: 5px;
-            transition: 0.2s;
+            margin-top: 10px;
+            transition: 0.3s;
         }
         .btn-login {
-            background: linear-gradient(90deg, #8a2be2, #d900ff);
+            background: linear-gradient(90deg, #7d2ae8, #d900ff);
             color: white;
-            box-shadow: 0 0 15px rgba(217, 0, 255, 0.4);
+            box-shadow: 0 4px 15px rgba(125, 42, 232, 0.4);
         }
-        .btn-login:hover { transform: scale(1.02); }
+        .btn-login:hover { transform: translateY(-2px); }
 
         .btn-link {
             background: transparent;
             border: 1px solid #00e5ff;
             color: #00e5ff;
-            margin-top: 15px;
+            margin-top: 20px;
             font-size: 14px;
         }
-        .btn-link:hover { background: rgba(0, 229, 255, 0.1); }
 
         /* --- Screens --- */
         #tool-screen { display: none; }
 
-        /* --- Status Console (Now in Middle) --- */
+        /* --- Status Console (Middle) --- */
         .console-label {
             text-align: left;
-            font-size: 12px;
+            font-size: 14px;
             color: #00ff88;
-            margin-top: 15px;
+            margin-top: 20px;
             margin-bottom: 5px;
             font-weight: bold;
+            display: flex;
+            align-items: center;
         }
+        .console-label::before {
+            content: '';
+            display: inline-block;
+            width: 8px; height: 8px;
+            background: #00ff88;
+            border-radius: 50%;
+            margin-right: 8px;
+            box-shadow: 0 0 5px #00ff88;
+        }
+
         .log-box {
             background: #000;
             border: 1px solid #00ff88;
-            height: 80px;
+            height: 100px;
             text-align: left;
-            padding: 8px;
-            font-size: 11px;
+            padding: 10px;
+            font-size: 12px;
             color: #00ff88;
             font-family: 'Courier New', monospace;
             overflow-y: auto;
             border-radius: 6px;
-            box-shadow: inset 0 0 10px rgba(0, 255, 136, 0.1);
-            margin-bottom: 20px; /* Space before emotes */
+            box-shadow: inset 0 0 20px rgba(0, 255, 136, 0.1);
+            margin-bottom: 25px;
         }
 
-        /* --- Emote Grid (At Bottom) --- */
+        /* --- Emote Grid (Bottom) --- */
         .grid-label {
             text-align: center;
             font-size: 14px;
             color: #aaa;
-            margin-bottom: 8px;
-            border-top: 1px solid #222;
-            padding-top: 10px;
+            margin-bottom: 10px;
+            border-top: 1px solid #333;
+            padding-top: 15px;
         }
         .emote-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            max-height: 200px; /* Thoda chhota kiya taki screen pe fit aaye */
-            overflow-y: auto;
-            padding: 5px;
+            gap: 12px;
+            width: 100%;
+            /* No max-height, page will scroll */
         }
         .emote-card {
-            background: #151515;
+            background: #1a1a1a;
             border: 1px solid #333;
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 10px;
             cursor: pointer;
             transition: 0.2s;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .emote-card:hover {
             border-color: #d900ff;
-            background: #201025;
-            transform: translateY(-2px);
+            background: #25102e;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
-        .emote-card img { width: 40px; height: 40px; object-fit: contain; margin-bottom: 5px; }
-        .emote-card span { display: block; font-size: 10px; color: #ccc; }
+        .emote-card img { width: 45px; height: 45px; object-fit: contain; margin-bottom: 8px; }
+        .emote-card span { font-size: 11px; color: #ccc; font-weight: bold; }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
     </style>
 </head>
 <body>
@@ -164,20 +188,20 @@
     <div class="container">
         <h1>KKG CHEATS</h1>
 
-        <!-- 1. LOGIN SCREEN -->
+        <!-- 1. CENTERED LOGIN SCREEN -->
         <div id="login-screen">
             <div class="inp-group">
-                <input type="text" id="log-user" placeholder="USERNAME">
+                <input type="text" id="log-user" placeholder="ENTER USERNAME">
             </div>
             <div class="inp-group">
-                <input type="password" id="log-pass" placeholder="PASSWORD">
+                <input type="password" id="log-pass" placeholder="ENTER PASSWORD">
             </div>
-            <button class="btn btn-login" onclick="login()">LOGIN ACCESS</button>
+            <button class="btn btn-login" onclick="login()">LOGIN NOW</button>
             <button class="btn btn-link" onclick="openKeyLink()">GET USER / PASS</button>
-            <p id="msg" style="color: #ff4444; margin-top: 10px; font-size: 12px;"></p>
+            <p id="msg" style="color: #ff4444; margin-top: 15px; font-size: 13px; font-weight: bold;"></p>
         </div>
 
-        <!-- 2. TOOL SCREEN -->
+        <!-- 2. SCROLLABLE TOOL SCREEN -->
         <div id="tool-screen">
             <!-- Inputs -->
             <div class="inp-group">
@@ -193,17 +217,17 @@
                 </select>
             </div>
 
-            <!-- STATUS SCREEN (Moved Here) -->
-            <div class="console-label">> LIVE STATUS LOG</div>
+            <!-- Status Console -->
+            <div class="console-label">SERVER STATUS</div>
             <div class="log-box" id="console">
-                [System]: Connected...<br>
-                [System]: Waiting for user input...
+                [System]: Connection Ready...<br>
+                [System]: Login Verified.<br>
             </div>
 
-            <!-- EMOTES (At Bottom) -->
+            <!-- Emote Grid -->
             <div class="grid-label">TAP EMOTE TO INJECT</div>
             <div class="emote-grid" id="grid">
-                <p style="grid-column: span 3; color: #666; font-size: 12px;">Loading Emotes...</p>
+                <p style="grid-column: span 3; color: #666; padding: 20px;">Fetching Data...</p>
             </div>
         </div>
     </div>
@@ -213,7 +237,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
     <script>
-        // 🔴🔴🔴 YAHAN APNA FIREBASE CONFIG CODE DALNA HAI 🔴🔴🔴
+        // 🔴 PASTE YOUR FIREBASE CONFIG HERE 🔴
         const firebaseConfig = {
   apiKey: "AIzaSyAS2lrxIdpz8TMTwEuSHy1Xsdx3X28ISNk",
   authDomain: "earning-f34b7.firebaseapp.com",
@@ -224,24 +248,23 @@
   appId: "1:423102037675:web:e7329b82117de13bd501ee"
 };
 
-        // Initialize Firebase
         if (!firebase.apps.length) {
             firebase.initializeApp(firebaseConfig);
         }
         const db = firebase.database();
         let currentLink = "https://google.com"; 
 
-        // Get Link for Button
+        // Get Link
         db.ref('settings/link').on('value', snap => {
             if(snap.exists()) currentLink = snap.val();
         });
 
-        // --- Login Logic ---
+        // Login Logic
         function login() {
             const u = document.getElementById('log-user').value;
             const p = document.getElementById('log-pass').value;
             const msg = document.getElementById('msg');
-            msg.innerText = "Checking...";
+            msg.innerText = "Verifying Credentials...";
 
             db.ref('settings').once('value').then(snap => {
                 const data = snap.val() || {};
@@ -253,22 +276,22 @@
                     document.getElementById('tool-screen').style.display = 'block';
                     loadEmotes();
                 } else {
-                    msg.innerText = "Invalid Username or Password!";
+                    msg.innerText = "Incorrect Username or Password";
                 }
-            }).catch(() => msg.innerText = "Internet Connection Error!");
+            }).catch(() => msg.innerText = "Network Error!");
         }
 
         function openKeyLink() {
             window.open(currentLink, '_blank');
         }
 
-        // --- Load Emotes ---
+        // Load Emotes
         function loadEmotes() {
             const grid = document.getElementById('grid');
             db.ref('emotes').on('value', snap => {
                 grid.innerHTML = "";
                 if(!snap.exists()) {
-                    grid.innerHTML = "<p style='grid-column: span 3; color:#666'>No Emotes Added via Admin Panel</p>";
+                    grid.innerHTML = "<p style='grid-column: span 3; color:#666'>No Emotes Added</p>";
                     return;
                 }
                 snap.forEach(child => {
@@ -276,14 +299,14 @@
                     grid.innerHTML += `
                         <div class="emote-card" onclick="send('${d.id}')">
                             <img src="${d.img}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/747/747376.png'">
-                            <span>${d.id}</span>
+                            <span>ID: ${d.id}</span>
                         </div>
                     `;
                 });
             });
         }
 
-        // --- Send Request ---
+        // Send API
         async function send(id) {
             const tc = document.getElementById('tc').value;
             const uid = document.getElementById('uid').value;
@@ -291,7 +314,7 @@
             const con = document.getElementById('console');
 
             if(!tc || !uid) {
-                con.innerHTML += `<span style="color:red">[Error]: Enter TC & UID First!</span><br>`;
+                con.innerHTML += `<span style="color:red">[Error]: Enter Team Code & UID</span><br>`;
                 con.scrollTop = con.scrollHeight;
                 return;
             }
@@ -302,17 +325,14 @@
             const url = `https://clientbp-emote-ggblueshark.vercel.app/play?tc=${tc}&uid=${uid}&emtid=${id}&server=${sv}`;
 
             try {
-                // Background request (no-cors prevents reading response but sends request)
                 await fetch(url, { mode: 'no-cors' });
-                con.innerHTML += `<span style="color:#00ff88">[Success]: Sent to server.</span><br>`;
+                con.innerHTML += `<span style="color:#00ff88">[Success]: Command Sent!</span><br>`;
             } catch (e) {
-                // Fallback
                 window.open(url, '_blank');
-                con.innerHTML += `<span style="color:cyan">[Info]: Opened in browser.</span><br>`;
+                con.innerHTML += `<span style="color:cyan">[Info]: Opened externally.</span><br>`;
             }
             con.scrollTop = con.scrollHeight;
         }
-
     </script>
 </body>
-</html>
+    </html>
